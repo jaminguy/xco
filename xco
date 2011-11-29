@@ -1,0 +1,14 @@
+#!/usr/bin/ruby
+
+found = false
+Dir.foreach("./") do |file|
+  extension = File.extname(file)
+  if extension == ".xcodeproj"
+    %x[open #{file}]
+    found = true
+  end
+end
+
+unless found
+  print ".xcodeproj file not found\n"
+end
